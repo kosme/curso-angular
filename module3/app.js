@@ -12,11 +12,20 @@ function FoundItems(){
     restrict: "E",
     templateUrl: 'items.html',
     scope:{
-      items: '<items'
-    }
+      items: '<',
+      onRemove:'&'
+    },
+    controller: itemsController,
+    controllerAs: 'list',
+    bindToController: true
   };
 
   return ddo;
+}
+
+function itemsController(){
+  var itemsControl = this;
+
 }
 
 
@@ -26,21 +35,22 @@ function NarrowItDownController(MenuSearchService) {
 
   narrow.searchTerm="";
   narrow.found=[];
+  narrow.error = false;
 
   narrow.removeItem = function (itemIndex) {
-    console.log("'this' is: ", this);
-    console.log("Last item removed was " + narrow.found[itemIndex]);
     MenuSearchService.removeItem(itemIndex);
   };
 
   narrow.getNarrowedItems = function (searchTerm) {
-    // console.log(searchTerm);
+    narrow.error = false;
     var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
 
     promise.then(function (response) {
       narrow.found = response;
-      // console.log(narrow.found);
-      console.log(response.length);
+      if(narrow.found.length==0)
+      {
+        narrow.error = true;
+      }
     })
     .catch(function (error) {
       console.log(error);
@@ -68,16 +78,16 @@ function MenuSearchService($http, ApiBasePath) {
         {
           var dish = result.data['menu_items'][i];
           found.push(dish['name']+", "+dish['short_name']+", "+dish['description']);
-          // console.log(dish);
         }
       }
+      if(searchTerm==="")
+        return [];
       return found;
     });
   };
 
   service.removeItem = function (itemIndex) {
     found.splice(itemIndex, 1);
-    console.log(found.length);
   };
 
 }

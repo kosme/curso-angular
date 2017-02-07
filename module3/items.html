@@ -1,8 +1,8 @@
 <div id="items">
   <ul>
-    <li ng-repeat="item in items.found">
+    <li ng-repeat="item in list.items">
       {{item}}
-      <button ng-click="items.onRemove({index: $index});">Don't want this one!</button>
+      <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
     </li>
 </ul>
 </div>
