@@ -12,7 +12,7 @@
     reg.email="enrique@popo"
     reg.phone="123-456-7890";
     reg.dish="f1";
-    reg.message ='asdffdsaf';
+    reg.message ='';
 
     reg.submit = function () {
       NewsletterService.checkMenuItem(reg.dish).then(function(response){
