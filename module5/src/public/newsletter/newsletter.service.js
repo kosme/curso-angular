@@ -4,8 +4,8 @@
   angular.module('public')
   .service('NewsletterService', NewsletterService);
 
-  NewsletterService.$inject = ['$http'];
-  function NewsletterService($http){
+  NewsletterService.$inject = ['$http','ApiPath'];
+  function NewsletterService($http,ApiPath){
     var service = this;
     var info = {};
     // var name = '';
@@ -15,7 +15,7 @@
     // var dish = '';
 
     service.checkMenuItem = function(item){
-      return $http.get('https://kosme-restaurant.herokuapp.com/menu_items/'+item.toUpperCase()+'.json')
+      return $http.get(ApiPath + '/menu_items/'+item.toUpperCase()+'.json')
       .then(function (response) {
         return response.data;
       },

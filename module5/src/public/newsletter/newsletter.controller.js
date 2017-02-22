@@ -12,13 +12,14 @@
     reg.info.lastname="fdsa";
     reg.info.email="enrique@popo"
     reg.info.phone="123-456-7890";
-    reg.info.dish="f1";
+    reg.info.dish="F1";
     reg.message ='';
 
     reg.submit = function () {
       NewsletterService.checkMenuItem(reg.info.dish).then(function(response){
         // console.log(response);
         if(response){
+          reg.info.dish = reg.info.dish.toUpperCase();
           NewsletterService.info = reg.info;
           reg.message = 'Your information has been saved';
         }
