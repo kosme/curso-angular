@@ -8,16 +8,9 @@
   function NewsletterController(NewsletterService){
     var reg = this;
     reg.info = {};
-    reg.info.name="asdf";
-    reg.info.lastname="fdsa";
-    reg.info.email="enrique@popo"
-    reg.info.phone="123-456-7890";
-    reg.info.dish="F1";
-    reg.message ='';
 
     reg.submit = function () {
       NewsletterService.checkMenuItem(reg.info.dish).then(function(response){
-        // console.log(response);
         if(response){
           reg.info.dish = reg.info.dish.toUpperCase();
           NewsletterService.info = reg.info;
@@ -27,11 +20,6 @@
           reg.message = 'No such menu number exists';
         }
       });
-      // console.log(NewsletterService.info.name);
-      // console.log(NewsletterService.info.lastname);
-      // console.log(NewsletterService.info.email);
-      // console.log(NewsletterService.info.phone);
-      // console.log(NewsletterService.info.dish.toUpperCase());
  };
   }
 })();
