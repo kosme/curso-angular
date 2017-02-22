@@ -1,0 +1,9 @@
+<H2>My Info</H2>
+<div ng-show="info.error">
+  Not Signed Up Yet. <a ui-sref='public.newsletter'>Sign up Now!</a>
+</div>
+<div ng-hide="info.error">
+  Hello {{info.myinfo.name}} {{info.myinfo.lastname}}. Your email is {{info.myinfo.mail}} and your phone is  {{info.myinfo.phone}}. <br />
+  Your favorite dish is {{info.dish.name}}, {{info.dish.description}}
+  <img class="img-responsive" width="250" height="150" ng-src="{{info.ApiPath}}/images/{{info.dish.short_name}}.jpg" alt="{{info.dish.name}}">
+</div>
