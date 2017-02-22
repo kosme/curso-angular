@@ -5,7 +5,7 @@
       <form name='regForm' novalidate>
 
         <input type="text" name="firstname" placeholder="First name"
-          ng-model="reg.name"
+          ng-model="reg.info.name"
           required
           minlength="4"
           ng-maxlength="10">
@@ -19,7 +19,7 @@
           <br>
 
           <input type="text" name="lastname" placeholder="Last name"
-            ng-model="reg.lastname"
+            ng-model="reg.info.lastname"
             required
             minlength="4"
             ng-maxlength="10">
@@ -33,7 +33,7 @@
             <br>
 
         <input type="email" name="email" placeholder="Email"
-          ng-model="reg.email"
+          ng-model="reg.info.email"
           required>
           <span ng-if="regForm.email.$invalid && regForm.email.$touched">
             Must be a valid email address: handle@domain format
@@ -41,7 +41,7 @@
           <br>
 
         <input type="text" name="phone" placeholder="Phone ###-###-####"
-          ng-model="reg.phone"
+          ng-model="reg.info.phone"
           pattern="(\d{3})-(\d{3})-(\d{4})" required>
           <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
             Phone must be in the format ###-###-####.
@@ -49,7 +49,7 @@
           <br>
 
         <input type="text" name="dish" placeholder="Favorite dish"
-          ng-model="reg.dish" required>
+          ng-model="reg.info.dish" required>
           <br />
 
         <button

@@ -7,33 +7,30 @@
   NewsletterController.$inject = ['NewsletterService'];
   function NewsletterController(NewsletterService){
     var reg = this;
-    reg.name="asdf";
-    reg.lastname="fdsa";
-    reg.email="enrique@popo"
-    reg.phone="123-456-7890";
-    reg.dish="f1";
+    reg.info = {};
+    reg.info.name="asdf";
+    reg.info.lastname="fdsa";
+    reg.info.email="enrique@popo"
+    reg.info.phone="123-456-7890";
+    reg.info.dish="f1";
     reg.message ='';
 
     reg.submit = function () {
-      NewsletterService.checkMenuItem(reg.dish).then(function(response){
+      NewsletterService.checkMenuItem(reg.info.dish).then(function(response){
         // console.log(response);
         if(response){
-          NewsletterService.name = reg.name;
-          NewsletterService.lastname = reg.lastname;
-          NewsletterService.email = reg.email;
-          NewsletterService.phone = reg.phone;
-          NewsletterService.dish = reg.dish;
+          NewsletterService.info = reg.info;
           reg.message = 'Your information has been saved';
         }
         else {
           reg.message = 'No such menu number exists';
         }
       });
-      // console.log(NewsletterService.name);
-      // console.log(NewsletterService.lastname);
-      // console.log(NewsletterService.email);
-      // console.log(NewsletterService.phone);
-      // console.log(NewsletterService.dish.toUpperCase());
+      // console.log(NewsletterService.info.name);
+      // console.log(NewsletterService.info.lastname);
+      // console.log(NewsletterService.info.email);
+      // console.log(NewsletterService.info.phone);
+      // console.log(NewsletterService.info.dish.toUpperCase());
  };
   }
 })();
