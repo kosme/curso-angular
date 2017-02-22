@@ -7,8 +7,8 @@
         <input type="text" name="firstname" placeholder="First name"
           ng-model="reg.info.name"
           required
-          minlength="4"
-          ng-maxlength="10">
+          minlength="1"
+          ng-maxlength="40">
           <span
             ng-if="(regForm.name.$error.minlength || regForm.name.$error.required) && regForm.name.$touched">
             Username must be at least 4 characters long
@@ -21,8 +21,8 @@
           <input type="text" name="lastname" placeholder="Last name"
             ng-model="reg.info.lastname"
             required
-            minlength="4"
-            ng-maxlength="10">
+            minlength="1"
+            ng-maxlength="40">
             <span
               ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
               Username must be at least 4 characters long
